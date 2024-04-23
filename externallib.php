@@ -46,6 +46,7 @@ class mod_goone_external extends external_api {
      * @return external_function_parameters
      */
     public static function get_hits($type, $tag, $language, $provider, $keyword, $sort, $offset) {
+         $keyword = urlencode($keyword); //avoid error when space in search term
         $result = goone_get_hits($type, $tag, $language, $provider, $keyword, $sort, $offset);
         return [
             'result' => $result,
